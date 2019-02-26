@@ -26,8 +26,39 @@ repositories, issues and organizations directly in R.
 
 ## Get information about your projects
 
+Some of the principal functions that you can use on the gitear package are
+`create_issue()`, `get_issues_open_state()`, `get_issues_closed_state()`, among
+others.
 
+If you want to use this functions you can follow the nest step by step code:
+```{r}
+# Write your gitea credentials:
+url <- "your gitea url" 
+api <- "The api key"
+project <- "The name of your project"
+repository <- "Your repository name"
+```
+
+
+### create_issue()
+With this function you can create an issue that it's going to appear on your
+repository of interest
+```{r}
+issue_title <- "Execute exploratory data analysis on inicial set"
+issue_body <- "Focus on: Data validation (Are data frame columns conforming to expected data types?), Data Integrity (Are all sources yielding expected row counts?), Signal strength (Flat variables (eg. extremely low variance))"
+
+create_issue(base_url = url, api_key = api, owner = project, repo = repository,
+             title = issue_title, body = issue_body)
+```
+
+### get_issues_open_state()
+This function allows you to get the data of all the issues that have an open
+state on your gitea environment.
 
 ```{r}
-# organizations <- get_an_organization("ixpantia", base_url, api_key)
+open_issues <- get_issues_open_state(base_url = url, api_key = api, 
+                                     owner = project, repo = repository)
 ```
+
+
+
